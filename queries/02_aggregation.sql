@@ -75,3 +75,11 @@ FROM order_items
 GROUP BY seller_id
 ORDER BY average_freight DESC
 LIMIT 10;
+
+-- Task 30. Distribution of review scores.
+SELECT
+    review_score,
+    COUNT(*) AS reviews_count
+FROM order_reviews
+GROUP BY review_score
+ORDER BY review_score;

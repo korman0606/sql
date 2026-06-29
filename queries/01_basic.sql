@@ -58,5 +58,26 @@ SELECT COUNT(DISTINCT product_category_name) AS categories
 FROM products;
 
 -- Task 15. What is the average review score?
-SELECT COUNT(DISTINCT product_category_name) AS categories
-FROM products;
+SELECT ROUND(AVG(review_score), 2) AS average_review
+FROM order_reviews;
+
+-- Task 16. What is the highest review score?
+SELECT MAX(review_score)
+FROM order_reviews;
+
+-- Task 17. What is the lowest review score?
+SELECT MIN(review_score)
+FROM order_reviews;
+
+-- Task 18. How many different payment methods are used?
+SELECT COUNT(DISTINCT payment_type)
+FROM order_payments;
+
+-- Task 19. List all payment methods.
+SELECT DISTINCT payment_type
+FROM order_payments
+ORDER BY payment_type;
+
+-- Task 20. What is the average payment amount?
+SELECT ROUND(AVG(payment_value),2)
+FROM order_payments;

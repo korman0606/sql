@@ -22,3 +22,12 @@ FROM customers
 GROUP BY customer_city
 ORDER BY customers_count DESC
 LIMIT 10;
+
+-- Task 24. Top 10 average product price by seller
+SELECT 
+	seller_id,
+	ROUND(AVG(price),2) as avg_price
+FROM order_items
+GROUP BY seller_id
+ORDER BY avg_price DESC
+LIMIT 10;

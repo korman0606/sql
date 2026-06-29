@@ -91,3 +91,11 @@ SELECT
 FROM order_payments
 GROUP BY payment_type
 ORDER BY payments_count DESC;
+
+-- Task 32. Average payment amount for each payment method.
+SELECT
+    payment_type,
+    ROUND(AVG(payment_value), 2) AS average_payment
+FROM order_payments
+GROUP BY payment_type
+ORDER BY average_payment DESC;

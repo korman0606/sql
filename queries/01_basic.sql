@@ -31,3 +31,8 @@ FROM orders;
 SELECT COUNT(order_status) AS delivered_orders
 FROM orders
 WHERE order_status = 'delivered';
+
+-- Task 9. How many canceled orders are there?
+SELECT COUNT(*) AS delivered_orders
+FROM orders
+WHERE order_status = 'canceled';

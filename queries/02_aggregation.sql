@@ -83,3 +83,11 @@ SELECT
 FROM order_reviews
 GROUP BY review_score
 ORDER BY review_score;
+
+-- Task 31. Which payment methods are used most often?
+SELECT
+    payment_type,
+    COUNT(*) AS payments_count
+FROM order_payments
+GROUP BY payment_type
+ORDER BY payments_count DESC;

@@ -99,3 +99,11 @@ SELECT
 FROM order_payments
 GROUP BY payment_type
 ORDER BY average_payment DESC;
+
+-- Task 33. Which payment method brings the highest total revenue?
+SELECT
+    payment_type,
+    ROUND(SUM(payment_value), 2) AS revenue
+FROM order_payments
+GROUP BY payment_type
+ORDER BY revenue DESC;

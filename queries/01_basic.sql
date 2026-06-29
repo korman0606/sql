@@ -13,3 +13,8 @@ FROM sellers;
 -- Task 4. How many products are available?
 SELECT COUNT(*) AS products_count
 FROM products;
+
+-- Task 5. What order statuses exist in the dataset?
+SELECT DISTINCT order_status 
+FROM orders
+ORDER BY order_status;

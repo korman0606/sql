@@ -40,3 +40,7 @@ WHERE order_status = 'canceled';
 -- Task 10. What is the average product price?
 SELECT ROUND(AVG(price), 2) AS average_price
 FROM order_items;
+
+-- Task 11. What is the most expensive product ever sold?
+SELECT MAX(price) AS max_price
+FROM order_items;

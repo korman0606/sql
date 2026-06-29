@@ -23,7 +23,7 @@ GROUP BY customer_city
 ORDER BY customers_count DESC
 LIMIT 10;
 
--- Task 24. Top 10 average product price by seller.
+-- Task 24. Average product price by seller (top 10).
 SELECT 
 	seller_id,
 	ROUND(AVG(price),2) as avg_price
@@ -65,4 +65,13 @@ SELECT
 FROM order_items
 GROUP BY seller_id
 ORDER BY revenue DESC
+LIMIT 10;
+
+-- Task 29. What is the average freight cost for each seller? (top 10)
+SELECT
+    seller_id,
+    ROUND(AVG(freight_value), 2) AS average_freight
+FROM order_items
+GROUP BY seller_id
+ORDER BY average_freight DESC
 LIMIT 10;

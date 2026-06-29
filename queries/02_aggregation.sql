@@ -14,7 +14,7 @@ FROM customers
 GROUP BY customer_state
 ORDER BY customers_count DESC;
 
--- Task 23. Top 10 cities by number of customers
+-- Task 23. Top 10 cities by number of customers.
 SELECT 
 	customer_city, 
 	COUNT(customer_unique_id) AS customers_count
@@ -23,7 +23,7 @@ GROUP BY customer_city
 ORDER BY customers_count DESC
 LIMIT 10;
 
--- Task 24. Top 10 average product price by seller
+-- Task 24. Top 10 average product price by seller.
 SELECT 
 	seller_id,
 	ROUND(AVG(price),2) as avg_price
@@ -31,3 +31,12 @@ FROM order_items
 GROUP BY seller_id
 ORDER BY avg_price DESC
 LIMIT 10;
+
+-- Search for the cheapest seller (based on the average price of the product).
+SELECT
+    seller_id,
+    ROUND(AVG(price), 2) AS avg_price
+FROM order_items
+GROUP BY seller_id
+ORDER BY avg_price 
+LIMIT 1;

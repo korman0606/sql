@@ -22,3 +22,7 @@ ORDER BY order_status;
 -- Task 6. Find the earliest order.
 SELECT MIN(order_purchase_timestamp) AS first_order
 FROM orders;
+
+-- Task 7. Find the latest order.
+SELECT MAX(order_purchase_timestamp) AS last_order
+FROM orders;

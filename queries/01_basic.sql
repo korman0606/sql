@@ -56,3 +56,7 @@ FROM customers;
 -- Task 14. How many unique product categories are there?
 SELECT COUNT(DISTINCT product_category_name) AS categories
 FROM products;
+
+-- Task 15. What is the average review score?
+SELECT COUNT(DISTINCT product_category_name) AS categories
+FROM products;

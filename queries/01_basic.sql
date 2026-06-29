@@ -48,3 +48,7 @@ FROM order_items;
 -- Task 12. What is the cheapest product ever sold?
 SELECT MIN(price) AS min_price
 FROM order_items;
+
+-- Task 13. How many unique cities are represented by customers?
+SELECT COUNT(DISTINCT customer_city) AS cities
+FROM customers;

@@ -107,3 +107,12 @@ SELECT
 FROM order_payments
 GROUP BY payment_type
 ORDER BY revenue DESC;
+
+-- Task 34. States with more than 5,000 customers.
+SELECT
+    customer_state,
+    COUNT(DISTINCT customer_unique_id) AS customers_count
+FROM customers
+GROUP BY customer_state
+HAVING COUNT(DISTINCT customer_unique_id) > 5000
+ORDER BY customers_count DESC;

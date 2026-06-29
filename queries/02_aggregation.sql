@@ -32,7 +32,7 @@ GROUP BY seller_id
 ORDER BY avg_price DESC
 LIMIT 10;
 
--- Search for the cheapest seller (based on the average price of the product).
+-- Task 25. Search for the cheapest seller (based on the average price of the product).
 SELECT
     seller_id,
     ROUND(AVG(price), 2) AS avg_price
@@ -40,3 +40,11 @@ FROM order_items
 GROUP BY seller_id
 ORDER BY avg_price 
 LIMIT 1;
+
+-- Task 26. What is the average order value?
+SELECT ROUND(AVG(order_total),2) as avg_order_value
+FROM (
+	SELECT SUM(price) as order_total
+	FROM order_items
+	GROUP BY order_id
+	) t;

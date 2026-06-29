@@ -52,3 +52,7 @@ FROM order_items;
 -- Task 13. How many unique cities are represented by customers?
 SELECT COUNT(DISTINCT customer_city) AS cities
 FROM customers;
+
+-- Task 14. How many unique product categories are there?
+SELECT COUNT(DISTINCT product_category_name) AS categories
+FROM products;

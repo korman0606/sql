@@ -9,3 +9,7 @@ FROM orders;
 -- Task 3. How many sellers are registered?
 SELECT COUNT(*) AS sellers_count
 FROM sellers;
+
+-- Task 4. How many products are available?
+SELECT COUNT(*) AS products_count
+FROM products;

@@ -70,9 +70,8 @@ SELECT MIN(review_score)
 FROM order_reviews;
 
 -- Task 18. How many different payment methods are used?
-SELECT DISTINCT payment_type
-FROM order_payments
-ORDER BY payment_type;
+SELECT COUNT(DISTINCT payment_type)
+FROM order_payments;
 
 -- Task 19. List all payment methods.
 SELECT DISTINCT payment_type

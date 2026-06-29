@@ -44,3 +44,7 @@ FROM order_items;
 -- Task 11. What is the most expensive product ever sold?
 SELECT MAX(price) AS max_price
 FROM order_items;
+
+-- Task 12. What is the cheapest product ever sold?
+SELECT MIN(price) AS min_price
+FROM order_items;

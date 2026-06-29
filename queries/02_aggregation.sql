@@ -13,3 +13,12 @@ SELECT
 FROM customers
 GROUP BY customer_state
 ORDER BY customers_count DESC;
+
+-- Task 23. Top 10 cities by number of customers
+SELECT 
+	customer_city, 
+	COUNT(customer_unique_id) AS customers_count
+FROM customers
+GROUP BY customer_city
+ORDER BY customers_count DESC
+LIMIT 10;

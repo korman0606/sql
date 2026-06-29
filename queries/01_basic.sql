@@ -36,3 +36,7 @@ WHERE order_status = 'delivered';
 SELECT COUNT(*) AS delivered_orders
 FROM orders
 WHERE order_status = 'canceled';
+
+-- Task 10. What is the average product price?
+SELECT ROUND(AVG(price), 2) AS average_price
+FROM order_items;

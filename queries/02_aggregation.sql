@@ -57,3 +57,12 @@ FROM order_items
 GROUP BY seller_id
 ORDER BY products_sold DESC
 LIMIT 10;
+
+-- Task 28. Which sellers generated the highest revenue?
+SELECT
+    seller_id,
+    ROUND(SUM(price), 2) AS revenue
+FROM order_items
+GROUP BY seller_id
+ORDER BY revenue DESC
+LIMIT 10;

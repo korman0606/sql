@@ -26,3 +26,8 @@ FROM orders;
 -- Task 7. Find the latest order.
 SELECT MAX(order_purchase_timestamp) AS last_order
 FROM orders;
+
+-- Task 8. How many delivered orders are there?
+SELECT COUNT(order_status) AS delivered_orders
+FROM orders
+WHERE order_status = 'delivered';

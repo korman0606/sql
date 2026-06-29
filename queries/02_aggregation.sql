@@ -48,3 +48,12 @@ FROM (
 	FROM order_items
 	GROUP BY order_id
 	) t;
+
+-- Task 27. Which sellers sold the largest number of products?
+SELECT
+    seller_id,
+    COUNT(*) AS products_sold
+FROM order_items
+GROUP BY seller_id
+ORDER BY products_sold DESC
+LIMIT 10;

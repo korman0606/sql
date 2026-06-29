@@ -116,3 +116,12 @@ FROM customers
 GROUP BY customer_state
 HAVING COUNT(DISTINCT customer_unique_id) > 5000
 ORDER BY customers_count DESC;
+
+-- Task 35. Sellers who have sold more than 1,000 products.
+SELECT
+    seller_id,
+    COUNT(*) AS products_sold
+FROM order_items
+GROUP BY seller_id
+HAVING COUNT(*) > 1000
+ORDER BY products_sold DESC;

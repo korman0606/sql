@@ -18,3 +18,7 @@ FROM products;
 SELECT DISTINCT order_status 
 FROM orders
 ORDER BY order_status;
+
+-- Task 6. Find the earliest order.
+SELECT MIN(order_purchase_timestamp) AS first_order
+FROM orders;

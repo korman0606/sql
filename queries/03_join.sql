@@ -1,4 +1,4 @@
--- Task 36. How many orders has each unique customer placed?
+-- Task 36. How many orders has each unique customer placed? (top 10)
 SELECT
 	c.customer_unique_id, 
 	COUNT(o.order_id) AS orders_count

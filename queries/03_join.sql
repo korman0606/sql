@@ -78,3 +78,14 @@ FROM order_reviews AS o_rev
 GROUP BY p.product_category_name
 ORDER BY review_score DESC
 LIMIT 10;
+
+-- Task 42. Average review score by seller.
+SELECT
+	oi.seller_id,
+	ROUND(AVG(o_rev.review_score),2) AS review_score
+FROM order_reviews AS o_rev
+	INNER JOIN order_items oi
+	ON o_rev.order_id = oi.order_id
+GROUP BY oi.seller_id
+ORDER BY review_score DESC
+LIMIT 10;

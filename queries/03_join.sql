@@ -79,7 +79,7 @@ GROUP BY p.product_category_name
 ORDER BY review_score DESC
 LIMIT 10;
 
--- Task 42. Average review score by seller.
+-- Task 42. Average review score by seller (top 10).
 SELECT
 	oi.seller_id,
 	ROUND(AVG(o_rev.review_score),2) AS review_score
@@ -88,4 +88,15 @@ FROM order_reviews AS o_rev
 	ON o_rev.order_id = oi.order_id
 GROUP BY oi.seller_id
 ORDER BY review_score DESC
+LIMIT 10;
+
+-- Task 43. Revenue by seller state (top 10)
+SELECT
+    s.seller_state,
+    ROUND(SUM(oi.price), 2) AS total_revenue
+FROM order_items oi
+JOIN sellers s
+    ON oi.seller_id = s.seller_id
+GROUP BY s.seller_state
+ORDER BY total_revenue DESC
 LIMIT 10;

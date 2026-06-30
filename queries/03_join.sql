@@ -31,4 +31,15 @@ GROUP BY p.product_category_name
 ORDER BY products_sold DESC
 LIMIT 10;
 
-
+-- Task 39. Revenue by customer state.
+SELECT
+	c.customer_state,
+	SUM(oi.price) AS total_revenue
+FROM order_items oi 
+	INNER JOIN orders o
+	ON oi.order_id = o.order_id
+	INNER JOIN customers c
+	ON o.customer_id = c.customer_id
+GROUP BY c.customer_state
+ORDER BY total_revenue DESC
+LIMIT 10;

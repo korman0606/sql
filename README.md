@@ -6,7 +6,7 @@ This project demonstrates SQL skills using a real-world e-commerce dataset.
 
 Dataset:
 - 100k+ orders
-- 9 tables
+- 8 tables
 - relational database
 - PostgreSQL
 

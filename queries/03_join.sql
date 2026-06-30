@@ -20,4 +20,15 @@ GROUP BY p.product_category_name
 ORDER BY total_revenue DESC
 LIMIT 10;
 
+-- Task 38. Top 10 product categories by quantity sold.
+SELECT
+    p.product_category_name,
+    COUNT(*) AS products_sold
+FROM products p
+JOIN order_items oi
+    ON p.product_id = oi.product_id
+GROUP BY p.product_category_name
+ORDER BY products_sold DESC
+LIMIT 10;
+
 

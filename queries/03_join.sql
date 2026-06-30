@@ -43,3 +43,25 @@ FROM order_items oi
 GROUP BY c.customer_state
 ORDER BY total_revenue DESC
 LIMIT 10;
+
+-- Task 40. Average order value by customer state (top 10).
+SELECT
+    customer_state,
+    ROUND(AVG(order_total), 2) AS avg_order_value
+FROM (
+    SELECT
+        c.customer_state,
+        o.order_id,
+        SUM(oi.price) AS order_total
+    FROM customers c
+    JOIN orders o
+        ON c.customer_id = o.customer_id
+    JOIN order_items oi
+        ON o.order_id = oi.order_id
+    GROUP BY
+        c.customer_state,
+        o.order_id
+) t
+GROUP BY customer_state
+ORDER BY avg_order_value DESC
+LIMIT 10;

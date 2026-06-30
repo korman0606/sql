@@ -100,3 +100,15 @@ JOIN sellers s
 GROUP BY s.seller_state
 ORDER BY total_revenue DESC
 LIMIT 10;
+
+-- Task 44. Average delivery time by customer state.
+SELECT
+    c.customer_city,
+    AVG(o.order_delivered_customer_date - o.order_purchase_timestamp) AS avg_delivery_time
+FROM customers c
+JOIN orders o
+    ON c.customer_id = o.customer_id
+WHERE o.order_delivered_customer_date IS NOT NULL
+GROUP BY c.customer_city
+ORDER BY avg_delivery_time
+LIMIT 10;

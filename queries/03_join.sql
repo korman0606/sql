@@ -65,3 +65,16 @@ FROM (
 GROUP BY customer_state
 ORDER BY avg_order_value DESC
 LIMIT 10;
+
+-- Task 41. Average review score by product category (top 10)
+SELECT
+	p.product_category_name AS product_category,
+	ROUND(AVG(o_rev.review_score),2) AS review_score
+FROM order_reviews AS o_rev
+	INNER JOIN order_items oi
+	ON o_rev.order_id = oi.order_id
+	INNER JOIN products p
+	ON p.product_id = oi.product_id
+GROUP BY p.product_category_name
+ORDER BY review_score DESC
+LIMIT 10;

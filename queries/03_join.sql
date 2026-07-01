@@ -167,3 +167,20 @@ ORDER BY
 	revenue DESC,
 	avg_review_score DESC
 LIMIT 10;
+
+-- Task 49. Revenue, orders and average review for each seller (top 10).
+SELECT
+	oi.seller_id,
+	SUM(oi.price) revenue,
+	COUNT(DISTINCT oi.order_id) orders_count,
+	ROUND(AVG(o_rev.review_score),2) avg_review_score
+FROM order_items oi
+	INNER JOIN order_reviews o_rev
+	ON oi.order_id = o_rev.order_id
+GROUP BY oi.seller_id
+ORDER BY 
+	revenue DESC,
+	avg_review_score DESC,
+	orders_count DESC
+LIMIT 10;
+

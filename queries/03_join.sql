@@ -141,7 +141,7 @@ GROUP BY s.seller_city
 ORDER BY total_price DESC
 LIMIT 10;
 
--- Task 47. Average product price by category.
+-- Task 47. Average product price by category (top 10).
 SELECT 
 	p.product_category_name,
 	ROUND(AVG(oi.price),2) avg_price

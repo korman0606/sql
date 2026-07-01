@@ -112,3 +112,20 @@ WHERE o.order_delivered_customer_date IS NOT NULL
 GROUP BY c.customer_city
 ORDER BY avg_delivery_time
 LIMIT 10;
+
+-- Task 45. Most popular payment type by customer state.
+SELECT
+    c.customer_state,
+    op.payment_type,
+    COUNT(*) AS payments_count
+FROM customers c
+JOIN orders o
+    ON c.customer_id = o.customer_id
+JOIN order_payments op
+    ON o.order_id = op.order_id
+GROUP BY
+    c.customer_state,
+    op.payment_type
+ORDER BY
+    c.customer_state,
+    payments_count DESC;

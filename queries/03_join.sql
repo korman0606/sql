@@ -149,4 +149,5 @@ FROM order_items oi
 	INNER JOIN products p
 	ON oi.product_id = p.product_id
 GROUP BY p.product_category_name
-ORDER BY avg_price DESC;
+ORDER BY avg_price DESC
+LIMIT 10;

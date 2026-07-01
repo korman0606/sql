@@ -184,3 +184,49 @@ ORDER BY
 	orders_count DESC
 LIMIT 10;
 
+-- Task 50. Full sales report.
+SELECT
+    o.order_id,
+
+    c.customer_unique_id,
+    c.customer_city,
+    c.customer_state,
+
+    s.seller_id,
+    s.seller_city,
+    s.seller_state,
+
+    p.product_category_name,
+
+    oi.price,
+    oi.freight_value,
+
+    op.payment_type,
+    op.payment_installments,
+    op.payment_value,
+
+    r.review_score,
+
+    o.order_purchase_timestamp,
+    o.order_delivered_customer_date
+FROM orders o
+
+JOIN customers c
+    ON o.customer_id = c.customer_id
+
+JOIN order_items oi
+    ON o.order_id = oi.order_id
+
+JOIN products p
+    ON oi.product_id = p.product_id
+
+JOIN sellers s
+    ON oi.seller_id = s.seller_id
+
+JOIN order_payments op
+    ON o.order_id = op.order_id
+
+LEFT JOIN order_reviews r
+    ON o.order_id = r.order_id
+
+LIMIT 10;

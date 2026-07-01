@@ -140,3 +140,13 @@ FROM order_items oi
 GROUP BY s.seller_city
 ORDER BY total_price DESC
 LIMIT 10;
+
+-- Task 47. Average product price by category.
+SELECT 
+	p.product_category_name,
+	ROUND(AVG(oi.price),2) avg_price
+FROM order_items oi 
+	INNER JOIN products p
+	ON oi.product_id = p.product_id
+GROUP BY p.product_category_name
+ORDER BY avg_price DESC;

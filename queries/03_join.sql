@@ -129,3 +129,14 @@ GROUP BY
 ORDER BY
     c.customer_state,
     payments_count DESC;
+
+-- Task 46. Top 10 cities by revenue.
+SELECT 
+	s.seller_city,
+	SUM(oi.price) AS total_price
+FROM order_items oi
+	INNER JOIN sellers s
+	ON oi.seller_id = s.seller_id
+GROUP BY s.seller_city
+ORDER BY total_price DESC
+LIMIT 10;

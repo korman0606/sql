@@ -113,7 +113,7 @@ GROUP BY c.customer_city
 ORDER BY avg_delivery_time
 LIMIT 10;
 
--- Task 45. Most popular payment type by customer state.
+-- Task 45. Most popular payment type by customer state (3 states).
 SELECT
     c.customer_state,
     op.payment_type,

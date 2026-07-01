@@ -151,3 +151,19 @@ FROM order_items oi
 GROUP BY p.product_category_name
 ORDER BY avg_price DESC
 LIMIT 10;
+
+-- Task 48. Revenue and average rating by category (top-10).
+SELECT
+	p.product_category_name,
+	SUM(oi.price) AS revenue,
+	ROUND(AVG(o_rev.review_score),2) AS avg_review_score
+FROM order_items oi
+	INNER JOIN products p
+	ON oi.product_id = p.product_id
+	INNER JOIN order_reviews o_rev
+	ON oi.order_id = o_rev.order_id
+GROUP BY p.product_category_name
+ORDER BY 
+	revenue DESC,
+	avg_review_score DESC
+LIMIT 10;

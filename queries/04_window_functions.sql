@@ -4,4 +4,5 @@ SELECT
 	SUM(price) AS revenue,
 	RANK() OVER (ORDER BY SUM(price) DESC) AS revenue_rank
 FROM order_items
-GROUP BY seller_id;
+GROUP BY seller_id
+LIMIT 10;

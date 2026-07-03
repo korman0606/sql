@@ -1,4 +1,4 @@
--- Task 51. Rank sellers by revenue
+-- Task 51. Rank sellers by revenue (top 10).
 SELECT 
 	seller_id,
 	SUM(price) AS revenue,

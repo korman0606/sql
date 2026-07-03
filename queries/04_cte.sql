@@ -35,4 +35,5 @@ WHERE revenue > (
     SELECT AVG(revenue)
     FROM seller_revenue
 )
-ORDER BY revenue DESC;
+ORDER BY revenue DESC
+LIMIT 10;

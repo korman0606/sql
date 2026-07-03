@@ -1,4 +1,4 @@
-# Task 51. Top 10 customers by total spending.
+-- Task 51. Top 10 customers by total spending.
 WITH customer_revenue AS (
     SELECT
         c.customer_unique_id,
@@ -17,3 +17,22 @@ SELECT
 FROM customer_revenue
 ORDER BY total_spent DESC
 LIMIT 10;
+
+-- Task 52. Sellers with revenue above average
+WITH seller_revenue AS (
+    SELECT
+        seller_id,
+        SUM(price) AS revenue
+    FROM order_items
+    GROUP BY seller_id
+)
+
+SELECT
+    seller_id,
+    ROUND(revenue, 2) AS revenue
+FROM seller_revenue
+WHERE revenue > (
+    SELECT AVG(revenue)
+    FROM seller_revenue
+)
+ORDER BY revenue DESC;

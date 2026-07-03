@@ -18,7 +18,7 @@ FROM customer_revenue
 ORDER BY total_spent DESC
 LIMIT 10;
 
--- Task 52. Sellers with revenue above average
+-- Task 52. Sellers with revenue above average (top 10).
 WITH seller_revenue AS (
     SELECT
         seller_id,

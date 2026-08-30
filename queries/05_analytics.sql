@@ -12,3 +12,12 @@ SELECT
 	ROUND(COUNT(*) FILTER (WHERE orders_count > 1) 
 	* 100 / COUNT(*),2) AS repeat_customer_rate
 FROM customer_orders;
+
+-- Task 62. Average Order Value by Payment Type.
+SELECT
+	payment_type,
+	AVG (payment_value) AS avg_payment
+FROM order_payments
+GROUP BY payment_type
+ORDER BY avg_payment DESC
+LIMIT 4;

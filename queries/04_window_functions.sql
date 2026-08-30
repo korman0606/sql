@@ -69,3 +69,38 @@ SELECT
 FROM monthly_revenue
 ORDER BY revenue DESC
 LIMIT 1;
+
+-- Task 56. Top 3 sellers in each state (top 10).
+WITH seller_revenue AS (
+    SELECT
+        s.seller_state,
+        s.seller_id,
+        SUM(oi.price) AS revenue
+    FROM sellers s
+    JOIN order_items oi
+        ON s.seller_id = oi.seller_id
+    GROUP BY
+        s.seller_state,
+        s.seller_id
+),
+ranked_sellers AS (
+    SELECT
+        seller_state,
+        seller_id,
+        revenue,
+        DENSE_RANK() OVER (
+            PARTITION BY seller_state
+            ORDER BY revenue DESC
+        ) AS seller_rank
+    FROM seller_revenue
+)
+
+SELECT
+    seller_state,
+    seller_id,
+    ROUND(revenue, 2) AS revenue,
+    seller_rank
+FROM ranked_sellers
+WHERE seller_rank <= 3
+ORDER BY seller_state, seller_rank
+LIMIT 10;

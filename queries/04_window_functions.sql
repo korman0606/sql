@@ -104,3 +104,31 @@ FROM ranked_sellers
 WHERE seller_rank <= 3
 ORDER BY seller_state, seller_rank
 LIMIT 10;
+
+--Task 57. Average order cost and comparison with the overall average (top 10).
+WITH seller_stats AS (
+    SELECT
+        oi.seller_id,
+        SUM(oi.price) AS revenue,
+        AVG(orv.review_score) AS avg_rating
+    FROM order_items oi
+    JOIN order_reviews orv
+        ON oi.order_id = orv.order_id
+    GROUP BY oi.seller_id
+)
+
+SELECT
+    seller_id,
+    ROUND(revenue, 2) AS revenue,
+    ROUND(avg_rating, 2) AS avg_rating
+FROM seller_stats
+WHERE revenue > (
+    SELECT AVG(revenue)
+    FROM seller_stats
+)
+AND avg_rating > (
+    SELECT AVG(avg_rating)
+    FROM seller_stats
+)
+ORDER BY revenue DESC
+LIMIT 10;

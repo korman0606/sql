@@ -144,3 +144,15 @@ GROUP BY c.customer_unique_id
 HAVING COUNT(o.order_id) > 1
 ORDER BY orders_count DESC
 LIMIT 10;
+
+--Task 59. Number of customer orders + average number of orders (top 10).
+SELECT
+    c.customer_unique_id,
+    COUNT(o.order_id) AS orders_count,
+    ROUND(AVG(COUNT(o.order_id)) OVER (), 2) AS avg_orders
+FROM customers c
+JOIN orders o
+    ON c.customer_id = o.customer_id
+GROUP BY c.customer_unique_id
+ORDER BY orders_count DESC
+LIMIT 10;

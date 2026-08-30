@@ -21,3 +21,18 @@ FROM order_payments
 GROUP BY payment_type
 ORDER BY avg_payment DESC
 LIMIT 4;
+
+-- Task 63. Sellers with High Revenue but Low Rating.
+SELECT 
+	oi.seller_id,
+	ROUND(SUM(oi.price), 2) AS revenue,
+	ROUND(AVG(r.review_score), 2) AS avg_rating
+FROM order_items oi
+JOIN order_reviews r
+    ON oi.order_id = r.order_id
+GROUP BY oi.seller_id
+HAVING 
+	SUM(oi.price) > 50000 
+	AND AVG(r.review_score) < 4
+ORDER BY revenue DESC
+LIMIT 10;

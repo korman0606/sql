@@ -36,3 +36,16 @@ HAVING
 	AND AVG(r.review_score) < 4
 ORDER BY revenue DESC
 LIMIT 10;
+
+--Task 64. Customer Lifetime Value (top 10).
+SELECT
+    c.customer_unique_id,
+    ROUND(SUM(op.payment_value), 2) AS lifetime_value
+FROM customers c
+JOIN orders o
+    ON c.customer_id = o.customer_id
+JOIN order_payments op
+    ON o.order_id = op.order_id
+GROUP BY c.customer_unique_id
+ORDER BY lifetime_value DESC
+LIMIT 10;

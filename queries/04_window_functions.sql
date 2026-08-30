@@ -18,3 +18,14 @@ FROM order_items oi
 GROUP BY p.product_category_name
 ORDER BY revenue_rank
 LIMIT 10;
+
+-- Task 53. The share of each category in total revenue (top 10).
+SELECT
+	p.product_category_name,
+	ROUND(SUM(oi.price)*100/SUM(SUM(oi.price)) OVER()) AS revenue_percentage
+FROM order_items oi
+	INNER JOIN products p
+	ON oi.product_id = p.product_id
+GROUP BY p.product_category_name
+ORDER BY revenue_percentage DESC
+LIMIT 10;

@@ -156,3 +156,17 @@ JOIN orders o
 GROUP BY c.customer_unique_id
 ORDER BY orders_count DESC
 LIMIT 10;
+
+--Task 60. Customer's previous purchase (top 10).
+SELECT
+    c.customer_unique_id,
+    o.order_purchase_timestamp,
+    LAG(o.order_purchase_timestamp) OVER (
+        PARTITION BY c.customer_unique_id
+        ORDER BY o.order_purchase_timestamp
+    ) AS previous_order
+FROM customers c
+JOIN orders o
+    ON c.customer_id = o.customer_id
+ORDER BY c.customer_unique_id, o.order_purchase_timestamp
+LIMIT 10;

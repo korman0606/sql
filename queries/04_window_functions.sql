@@ -29,3 +29,25 @@ FROM order_items oi
 GROUP BY p.product_category_name
 ORDER BY revenue_percentage DESC
 LIMIT 10;
+
+-- Task 54. Cumulative revenue by month (top 10).
+WITH monthly_revenue AS (
+    SELECT
+        DATE_TRUNC('month', o.order_purchase_timestamp) AS month,
+        SUM(oi.price) AS revenue
+    FROM orders o
+    JOIN order_items oi
+        ON o.order_id = oi.order_id
+    GROUP BY DATE_TRUNC('month', o.order_purchase_timestamp)
+)
+
+SELECT
+    month,
+    ROUND(revenue, 2) AS revenue,
+    ROUND(
+        SUM(revenue) OVER (ORDER BY month),
+        2
+    ) AS cumulative_revenue
+FROM monthly_revenue
+ORDER BY month
+LIMIT 10;

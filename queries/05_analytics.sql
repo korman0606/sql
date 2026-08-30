@@ -49,3 +49,17 @@ JOIN order_payments op
 GROUP BY c.customer_unique_id
 ORDER BY lifetime_value DESC
 LIMIT 10;
+
+-- Task 65. Sellers with high revenue but low sales volume (top 10).
+SELECT
+    seller_id,
+    COUNT(*) AS items_sold,
+    ROUND(SUM(price), 2) AS revenue,
+    ROUND(AVG(price), 2) AS avg_item_price
+FROM order_items
+GROUP BY seller_id
+HAVING
+    COUNT(*) < 50
+    AND SUM(price) > 10000
+ORDER BY avg_item_price DESC
+LIMIT 10;

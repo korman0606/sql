@@ -5,7 +5,7 @@
 This project demonstrates SQL skills using a real-world e-commerce dataset.
 
 Dataset:
-- 100k+ orders
+- 65 orders
 - 8 tables
 - relational database
 - PostgreSQL
@@ -35,11 +35,11 @@ Dataset:
 
 ✔ Window Functions
 
-✔ CASE
-
 ✔ Subqueries
 
 ✔ Aggregate Functions
+
+✔ FILTER
 
 ## Business Questions
 
